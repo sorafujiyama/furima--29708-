@@ -14,7 +14,7 @@
 ### Association
 
 - has_many : items
-- has_one : orders
+- has_many : orders
 
 
 
@@ -22,9 +22,9 @@
 
 |      Column     | Type   | Options     |
 | --------------- | ------ | ----------- |
-| product_name    | string | null: false |
+| name    | string | null: false |
 | decription      | text   | null: false |
-| category        | string | null: false |
+| category        | integer | null: false |
 | status          | integer | null: false |
 | shopping_cost   | integer | null: false |
 | shopping_area   | integer | null: false |
@@ -67,4 +67,4 @@
 
 - belongs_to : user
 - belongs_to : item
-- has_on : buy
+- has_one : buy
