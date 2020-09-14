@@ -14,7 +14,7 @@
 ### Association
 
 - has_many : items
-- has_many : orders
+- has_one : orders
 
 
 
@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to : user
-- has_many :orders
+- has_one :orders
 
 
 
@@ -43,9 +43,6 @@
 
 |         Column           | Type   | Options     |
 | -------------------------| ------ | ----------- |
-| card_information         | integer | null: false |
-| expiration_date          | integer | null: false |
-| security_code            | integer | null: false |
 | postal_code     | string | null: false |
 | prefectures     | integer | null: false |
 | municipalities  | string | null: false |
@@ -70,4 +67,4 @@
 
 - belongs_to : user
 - belongs_to : item
-- has_on : buys
+- has_on : buy
