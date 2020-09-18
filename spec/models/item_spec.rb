@@ -44,14 +44,24 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shopping area is not a number")
       end
       it "発送までの日数が空だと登録できない" do
-        @item.shopping_days_id = nil
+        @item.shopping_days_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shopping days is not a number")
+        expect(@item.errors.full_messages).to include("Shopping days must be other than 1")
       end
       it "価格が空だと出品できない" do
         @item.price = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
+      end
+      it "価格が300以下だと出品できない" do
+        @item.price = 200
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+      it "価格が9999999以上だと出品できない" do
+        @item.price = 99999999
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
     end
   end
