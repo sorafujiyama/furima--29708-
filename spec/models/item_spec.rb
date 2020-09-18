@@ -39,9 +39,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shopping cost must be other than 1")
       end
       it "発送元の地域が空だと出品できない" do
-        @item.shopping_area = nil
+        @item.shopping_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shopping area is not a number")
+        expect(@item.errors.full_messages).to include("Shopping area must be other than 1")
       end
       it "発送までの日数が空だと登録できない" do
         @item.shopping_days_id = 1
