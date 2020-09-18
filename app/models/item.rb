@@ -10,11 +10,6 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :name, presence: true
   validates :decription, presence: true
-  validates :category, presence: true
-  validates :status, presence: true
-  validates :shopping_cost, presence: true
-  validates :shopping_area, presence: true
-  validates :shopping_days, presence: true
   validates :price, presence: true
 
   validates :category_id, :status_id, :shopping_cost_id, :shopping_area_id, :shopping_days_id, numericality: { other_than: 1 } 
