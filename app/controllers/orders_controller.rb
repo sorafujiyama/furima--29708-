@@ -11,7 +11,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(price: order_params[:price])
+    @address = Address.create(order_params [:postal_code, :prefecture_id, :municipality, :address, :building, :tel])
+    @order = Order.new(order_params[:token])
     if @order.valid?
       pay_item
       return redirect_to root_path
@@ -22,7 +23,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:token, :postal_code, :prefecture_id, :municipality, :address, :building, :tel)
+    params.require(address).permit(:token, :postal_code, :prefecture_id, :municipality, :address, :building, :tel)
   end
 
   def pay_item
