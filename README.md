@@ -39,13 +39,13 @@
 
 
 
-## buys テーブル
+## addresses テーブル
 
 |         Column           | Type   | Options     |
 | -------------------------| ------ | ----------- |
 | postal_code     | string | null: false |
-| prefectures     | integer | null: false |
-| municipalities  | string | null: false |
+| prefecture_id     | integer | null: false |
+| municipality  | string | null: false |
 | address         | string | null: false |
 | building        | string |             |
 | tel             | string | null: false |
