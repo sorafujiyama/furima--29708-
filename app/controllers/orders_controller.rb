@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
+  
+
 
   def index
     @address = AddressOrder.new
     @item = Item.find(params[:item_id])
-    if current_user == @item.user
+    if current_user == @item.user || @item.order.present?
       redirect_to root_path
     elsif user_signed_in?
     else
