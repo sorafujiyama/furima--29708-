@@ -58,6 +58,11 @@ RSpec.describe AddressOrder, type: :model do
         @address_order.valid?
         expect(@address_order.errors.full_messages).to include("Tel is invalid")
       end
+      it "電話番号に-が含まれていると購入できない" do
+        @address_order.tel = "-"
+        @address_order.valid?
+        expect(@address_order.errors.full_messages).to include("Tel is invalid")
+      end
     end
   end
 end
