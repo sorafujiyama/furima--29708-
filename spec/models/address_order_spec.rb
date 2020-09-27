@@ -24,10 +24,20 @@ RSpec.describe AddressOrder, type: :model do
         @address_order.valid?
         expect(@address_order.errors.full_messages).to include("Postal code is invalid")
       end
-      it "都道府県が空だと購入できない" do
-        @address_order.prefecture_id = nil
+      it "郵便番号が11桁以上だと購入できない" do
+        @address_order.postal_code = "123456789123"
         @address_order.valid?
-        expect(@address_order.errors.full_messages).to include("Prefecture can't be blank", "Prefecture is not a number")
+        expect(@address_order.errors.full_messages).to include("Postal code is invalid")
+      end
+      it "郵便番号に-を含まないと購入できない" do
+        @address_order.postal_code = "-"
+        @address_order.valid?
+        expect(@address_order.errors.full_messages).to include("Postal code is invalid")
+      end
+      it "都道府県が空だと購入できない" do
+        @address_order.prefecture_id = 1
+        @address_order.valid?
+        expect(@address_order.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it "市区町村が空だと購入できない" do
         @address_order.municipality = nil
